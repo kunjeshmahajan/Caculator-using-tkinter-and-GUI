@@ -24,7 +24,7 @@ def ask_question():
 def game():
     print("check your math logic\n")
     score = 0
-    for i in range(5):
+    for i in range(10):
         if ask_question()==True:
             score+=1
             print("correct! oh yeah")
@@ -32,3 +32,46 @@ def game():
             print("Incorrct")
     print(f'Your score is {score}')
 game()
+
+
+
+#output
+
+
+
+check your math logic
+
+what is5 * 4?
+20
+correct! oh yeah
+what is5 / 9?
+.4
+Incorrct
+what is10 * 7?
+70
+correct! oh yeah
+what is4 + 4?
+16
+Incorrct
+what is10 - 10?
+0
+correct! oh yeah
+what is9 + 5?
+14
+correct! oh yeah
+what is5 + 6?
+11
+correct! oh yeah
+what is5 + 3?
+8
+correct! oh yeah
+what is3 - 8?
+-5
+correct! oh yeah
+what is5 / 4?
+1.2
+Incorrct
+Your score is 7
+
+
+
