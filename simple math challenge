@@ -1,77 +1,220 @@
-import random
-import operator
+import tkinter
+from tkinter import *
+
+from tkinter import messagebox
+
+root=tkinter.Tk()
+root.geometry("250x400")
+
+root.title("calculator")
 
 
-def random_problem():
-    operators = {
-        '+': operator.add,
-        '-': operator.sub,
-        '*': operator.mul,
-        '/': operator.truediv,
-    }
-    num_1=random.randint(1,10)
-    num_2=random.randint(1,10)
-    operation= random.choice(list(operators.keys()))
-    answer=operators.get(operation)(num_1,num_2)
-    print(f'what is{num_1} {operation} {num_2}?')
-    return answer
-def ask_question():
-    answer = random_problem()
-    guess = float(input())
-    return guess == answer
+val = ""
 
 
-def game():
-    print("check your math logic\n")
-    score = 0
-    for i in range(10):
-        if ask_question()==True:
-            score+=1
-            print("correct! oh yeah")
+a = 0
+operator = ""
+
+def btn_1_isclicked():
+    global val
+    val = val + "1"
+    data.set(val)
+    
+
+def btn_2_isclicked():
+    global val
+    val = val + "2"  
+    data.set(val)
+    
+def btn_3_isclicked():
+    global val
+    val = val+ "3"  
+    data.set(val)
+
+def btn_5_isclicked():
+    global val
+    val = val+ "4"  
+    data.set(val)
+def btn_6_isclicked():
+    global val
+    val = val+ "5"  
+    data.set(val)
+def btn_7_isclicked():
+    global val
+    val = val+ "6"  
+    data.set(val)
+
+def btn_9_isclicked():
+    global val
+    val = val+ "7"  
+    data.set(val)
+def btn_10_isclicked():
+    global val
+    val = val+ "8"  
+    data.set(val)
+def btn_11_isclicked():
+    global val
+    val = val+ "9"  
+    data.set(val)
+
+def btn_13_isclicked():
+    global val
+    val = val+ "0"  
+    data.set(val)
+
+    
+def plus():
+    global a
+    global operator
+    global val
+    a= int(val)
+    operator = "+"
+    val = val +"+"
+    data.set(val)
+    
+def mi():
+    global a
+    global operator
+    global val
+    a= int(val)
+    operator = "-"
+    val = val +"-"
+    data.set(val)
+
+def mul():
+    global a
+    global operator
+    global val
+    a= int(val)
+    operator = "*"
+    val = val +"*"
+    data.set(val)
+
+
+def div():
+    global a
+    global operator
+    global val
+    a= int(val)
+    operator = "/"
+    val = val +"/"
+    data.set(val)    
+
+    
+    
+def c():
+    global a
+    global operator
+    global val
+    val = ""
+    a=0
+    operator = ""
+    data.set(val)
+    
+
+def result():
+    global a
+    global operator
+    global val
+    val2=val
+    if(operator=="+"):
+        k=int((val2.split("+")[1]))
+        c=a+k
+        data.set(c)
+        val = str(c)
+    elif(operator=="-"):
+        k=int((val2.split("-")[1]))
+        c=a-k
+        data.set(c)
+        val = str(c)
+    if(operator=="*"):
+        k=int((val2.split("*")[1]))
+        c=a*k
+        data.set(c)
+        val = str(c)
+    if(operator=="/"):
+        k=int((val2.split("/")[1]))
+        if(k==0):
+            messagebox.showerror("error","division by 0")
         else:
-            print("Incorrct")
-    print(f'Your score is {score}')
-game()
+            c=a/k
+            data.set(c)
+            val = str(c)
+    
+        
+        
+
+data = StringVar()
+
+lbl = Label(root,text="label",anchor=SE,font="Bold",textvariable=data,bg="white",fg="black")
+lbl.pack(expand=True,fill="both")
+
+btnrow1=Frame(root,bg="black")
+btnrow1.pack(expand = True,fill = "both")
+
+btnrow2 = Frame(root)
+btnrow2.pack(expand = True, fill = "both")
+
+btnrow3 = Frame(root)
+btnrow3.pack(expand = True, fill = "both")
+
+btnrow4 = Frame(root)
+btnrow4.pack(expand = True, fill = "both")
+
+
+btn1=Button(btnrow1,text="1",font=("Bold",15),relief=GROOVE,border=0,command=btn_1_isclicked)
+btn1.pack(side = LEFT,expand = True,fill="both")
+
+btn2=Button(btnrow1,text="2",font=("Bold",15),relief=GROOVE,border=0,command=btn_2_isclicked)
+btn2.pack(side = LEFT,expand = True,fill="both")
+
+btn3=Button(btnrow1,text="3",font=("Bold",15),relief=GROOVE,border=0,command=btn_3_isclicked)
+btn3.pack(side = LEFT,expand = True,fill="both")
+
+btnplus=Button(btnrow1,text="+",font=("Bold",15),relief=GROOVE,border=0,command=plus)
+btnplus.pack(side = LEFT,expand = True,fill="both")
+
+
+btn5=Button(btnrow2,text="4",font=("Bold",15),relief=GROOVE,border=0,command=btn_5_isclicked)
+btn5.pack(side = LEFT,expand = True,fill="both")
+
+btn6=Button(btnrow2,text="5",font=("Bold",15),relief=GROOVE,border=0,command=btn_6_isclicked)
+btn6.pack(side = LEFT,expand = True,fill="both")
+
+btn7=Button(btnrow2,text="6",font=("Bold",15),relief=GROOVE,border=0,command=btn_7_isclicked)
+btn7.pack(side = LEFT,expand = True,fill="both")
+
+btnminus=Button(btnrow2,text="-",font=("Bold",15),relief=GROOVE,border=0,command=mi)
+btnminus.pack(side = LEFT,expand = True,fill="both")
+
+btn9=Button(btnrow3,text="7",font=("Bold",15),relief=GROOVE,border=0,command=btn_9_isclicked)
+btn9.pack(side = LEFT,expand = True,fill="both")
+
+btn10=Button(btnrow3,text="8",font=("Bold",15),relief=GROOVE,border=0,command=btn_10_isclicked)
+btn10.pack(side = LEFT,expand = True,fill="both")
+
+btn11=Button(btnrow3,text="9",font=("Bold",15),relief=GROOVE,border=0,command=btn_11_isclicked)
+btn11.pack(side = LEFT,expand = True,fill="both")
+
+btnmul=Button(btnrow3,text="*",font=("Bold",15),relief=GROOVE,border=0,command=mul)
+btnmul.pack(side = LEFT,expand = True,fill="both")
+
+
+btn13=Button(btnrow4,text="0",font=("Bold",15),relief=GROOVE,border=0,command=btn_13_isclicked)
+btn13.pack(side = LEFT,expand = True,fill="both")
+
+btnequal=Button(btnrow4,text="=",font=("Bold",15),relief=GROOVE,border=0,command=result)
+btnequal.pack(side = LEFT,expand = True,fill="both")
+
+btndiv=Button(btnrow4,text="/",font=("Bold",15),relief=GROOVE,border=0,command=div)
+btndiv.pack(side = LEFT,expand = True,fill="both")
 
 
 
-#output
+btnc=Button(btnrow4,text="C",font=("Bold",15),relief=GROOVE,border=0,command=c)
+btnc.pack(side = LEFT,expand = True,fill="both")
 
 
 
-check your math logic
 
-what is5 * 4?
-20
-correct! oh yeah
-what is5 / 9?
-.4
-Incorrct
-what is10 * 7?
-70
-correct! oh yeah
-what is4 + 4?
-16
-Incorrct
-what is10 - 10?
-0
-correct! oh yeah
-what is9 + 5?
-14
-correct! oh yeah
-what is5 + 6?
-11
-correct! oh yeah
-what is5 + 3?
-8
-correct! oh yeah
-what is3 - 8?
--5
-correct! oh yeah
-what is5 / 4?
-1.2
-Incorrct
-Your score is 7
-
-
-
+root.mainloop()
